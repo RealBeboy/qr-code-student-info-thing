@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>School QR Code Scan Dashboard</h1>
+    <p>Total Scans: {{ total_scans }}</p>
+    <p>Late Entries: {{ late_entries }}</p>
+    <p>Unauthorized Entries: {{ unauthorized_entries }}</p>
+    <h2>Recent Scans:</h2>
+    <ul>
+        {% for scan in scans %}
+            <li>LRN: {{ scan[0] }} - Time: {{ scan[1] }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
