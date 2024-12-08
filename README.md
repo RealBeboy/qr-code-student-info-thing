@@ -1,0 +1,1 @@
+# qr-code-student-info-thing
