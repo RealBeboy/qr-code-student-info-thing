@@ -28,43 +28,129 @@ def home():
     # Define the HTML template with placeholders for student information
     html_template = """
     <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Student Information</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                text-align: center;
-                margin: 20px;
-            }
-            img {
-                width: 200px;
-                height: 200px;
-                border-radius: 50%;
-            }
-        </style>
-        <script>
-            // Auto-refresh every 5 seconds
-            setInterval(function() {
-                window.location.reload();
-            }, 500);
-        </script>
-    </head>
-    <body>
-        <h1>Student Information</h1>
-        {% if photo_url %}
-            <img src="{{ photo_url }}" alt="Student Photo">
-        {% else %}
-            <p>No photo available</p>
-        {% endif %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e3f2fd; /* Light Blue */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 40px;
+            color: #1976d2; /* Blue */
+            margin-bottom: 20px;
+        }
+
+        /* School Logo */
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            width: 120px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Card Style for Information */
+        .info-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 350px;
+            text-align: center;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Photo Styling */
+        .photo-container {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Text Styles */
+        p {
+            font-size: 20px; /* Larger text */
+            line-height: 1.6;
+            margin: 15px 0;
+            color: #333;
+        }
+
+        strong {
+            color: #1976d2; /* Blue */
+        }
+
+        /* Error Message */
+        .no-photo {
+            font-size: 18px;
+            color: #f44336; /* Red */
+        }
+
+    </style>
+    <script>
+        // Auto-refresh every 500 milliseconds
+        setInterval(function() {
+            window.location.reload();
+        }, 500);
+    </script>
+</head>
+<body>
+
+    <!-- School Logo -->
+    <div class="logo-container">
+        <img src="logo.png" alt="School Logo"> <!-- Replace with your logo path -->
+    </div>
+
+    <h1>Student Information</h1>
+
+    <div class="info-card">
+        <div class="photo-container">
+            {% if photo_url %}
+                <img src="{{ photo_url }}" alt="Student Photo">
+            {% else %}
+                <div class="no-photo">No photo available</div>
+            {% endif %}
+        </div>
+
         <p><strong>Name:</strong> {{ name }}</p>
         <p><strong>Age:</strong> {{ age }}</p>
         <p><strong>LRN:</strong> {{ lrn }}</p>
         <p><strong>Gender:</strong> {{ gender }}</p>
-    </body>
-    </html>
+    </div>
+
+</body>
+</html>
+
+
     """
     # Pass student information into the template
     return render_template_string(html_template, 
